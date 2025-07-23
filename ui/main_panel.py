@@ -1,4 +1,5 @@
-from ttkbootstrap import Window
+from ttkbootstrap import Window, Labelframe, Radiobutton
+from ttkbootstrap import StringVar
 
 
 class MainPanel(Window):
@@ -10,3 +11,19 @@ class MainPanel(Window):
             )
 
         self.place_window_center()
+        self.select_game()
+
+    def select_game(self):
+        self.fr_select_game = Labelframe(self, text="Select Game",
+                                         labelanchor="n")
+        self.fr_select_game.grid(row=0, column=0, padx=15, pady=15)
+
+        self.radio_play = Radiobutton(self.fr_select_game, text="Play",
+                                      value="play")
+        self.radio_play.grid(row=0, column=0, padx=(20, 20), pady=(15, 0),
+                             sticky="w")
+
+        self.radio_replay = Radiobutton(self.fr_select_game, text="RePlay",
+                                        value="replay")
+        self.radio_replay.grid(row=1, column=0, padx=(20, 20), pady=(15, 15),
+                               sticky="w")
