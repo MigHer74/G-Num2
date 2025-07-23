@@ -14,6 +14,7 @@ class MainPanel(Window):
         self.select_game()
         self.select_type()
         self.panel_short_game()
+        self.panel_long_game()
 
     def select_game(self):
         self.fr_select_game = Labelframe(self, text="Select Game",
@@ -75,3 +76,82 @@ class MainPanel(Window):
         self.entry_item_06 = Entry(self.fr_short_game, width=3,
                                    justify="center")
         self.entry_item_06.grid(row=1, column=5, padx=(15, 15), pady=(15, 15))
+
+    def panel_long_game(self):
+        self.fr_long_game = Labelframe(self,
+                                       text="Last Result of The Long Game",
+                                       labelanchor="n")
+        self.fr_long_game.grid(row=1, column=1, padx=(15, 15), pady=(15, 15),
+                               sticky="n")
+
+        self.entry_item_11 = Entry(self.fr_long_game, width=3,
+                                   justify="center")
+        self.entry_item_11.grid(row=1, column=0, padx=(15, 0), pady=(15, 15))
+
+        self.entry_item_12 = Entry(self.fr_long_game, width=3,
+                                   justify="center")
+        self.entry_item_12.grid(row=1, column=1, padx=(15, 0), pady=(15, 15))
+
+        self.entry_item_13 = Entry(self.fr_long_game, width=3,
+                                   justify="center")
+        self.entry_item_13.grid(row=1, column=2, padx=(15, 0), pady=(15, 15))
+
+        self.entry_item_14 = Entry(self.fr_long_game, width=3,
+                                   justify="center")
+        self.entry_item_14.grid(row=1, column=3, padx=(15, 0), pady=(15, 15))
+
+        self.entry_item_15 = Entry(self.fr_long_game, width=3,
+                                   justify="center")
+        self.entry_item_15.grid(row=1, column=4, padx=(15, 0), pady=(15, 15))
+
+        self.entry_item_16 = Entry(self.fr_long_game, width=3,
+                                   justify="center")
+        self.entry_item_16.grid(row=1, column=5, padx=(15, 15), pady=(15, 15))
+
+        self.entry_item_21 = Entry(self.fr_long_game, width=3,
+                                   justify="center")
+        self.entry_item_21.grid(row=2, column=0, padx=(15, 0), pady=(15, 15))
+
+        self.entry_item_22 = Entry(self.fr_long_game, width=3,
+                                   justify="center")
+        self.entry_item_22.grid(row=2, column=1, padx=(15, 0), pady=(15, 15))
+
+        self.entry_item_23 = Entry(self.fr_long_game, width=3,
+                                   justify="center")
+        self.entry_item_23.grid(row=2, column=2, padx=(15, 0), pady=(15, 15))
+
+        self.entry_item_24 = Entry(self.fr_long_game, width=3,
+                                   justify="center")
+        self.entry_item_24.grid(row=2, column=3, padx=(15, 0), pady=(15, 15))
+
+        self.entry_item_25 = Entry(self.fr_long_game, width=3,
+                                   justify="center")
+        self.entry_item_25.grid(row=2, column=4, padx=(15, 0), pady=(15, 15))
+
+        self.entry_item_26 = Entry(self.fr_long_game, width=3,
+                                   justify="center")
+        self.entry_item_26.grid(row=2, column=5, padx=(15, 15), pady=(15, 15))
+
+        self.entry_item_31 = Entry(self.fr_long_game, width=3,
+                                   justify="center")
+        self.entry_item_31.grid(row=3, column=0, padx=(15, 0), pady=(15, 15))
+
+        self.entry_item_32 = Entry(self.fr_long_game, width=3,
+                                   justify="center")
+        self.entry_item_32.grid(row=3, column=1, padx=(15, 0), pady=(15, 15))
+
+        self.entry_item_33 = Entry(self.fr_long_game, width=3,
+                                   justify="center")
+        self.entry_item_33.grid(row=3, column=2, padx=(15, 0), pady=(15, 15))
+
+        self.entry_item_34 = Entry(self.fr_long_game, width=3,
+                                   justify="center")
+        self.entry_item_34.grid(row=3, column=3, padx=(15, 0), pady=(15, 15))
+
+        self.entry_item_35 = Entry(self.fr_long_game, width=3,
+                                   justify="center")
+        self.entry_item_35.grid(row=3, column=4, padx=(15, 0), pady=(15, 15))
+
+        self.entry_item_36 = Entry(self.fr_long_game, width=3,
+                                   justify="center")
+        self.entry_item_36.grid(row=3, column=5, padx=(15, 15), pady=(15, 15))
