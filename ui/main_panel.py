@@ -1,4 +1,4 @@
-from ttkbootstrap import Window, Labelframe, Radiobutton
+from ttkbootstrap import Window, Labelframe, Radiobutton, Entry
 from ttkbootstrap import StringVar
 
 
@@ -13,6 +13,7 @@ class MainPanel(Window):
         self.place_window_center()
         self.select_game()
         self.select_type()
+        self.panel_short_game()
 
     def select_game(self):
         self.fr_select_game = Labelframe(self, text="Select Game",
@@ -43,3 +44,34 @@ class MainPanel(Window):
                                       value="long")
         self.radio_long.grid(row=1, column=0, padx=(20, 20), pady=(15, 15),
                              sticky="w")
+
+    def panel_short_game(self):
+        self.fr_short_game = Labelframe(self,
+                                        text="Last Result of the Short Game",
+                                        labelanchor="n")
+        self.fr_short_game.grid(row=0, column=1, padx=(15, 15), pady=(15, 15),
+                                sticky="n")
+
+        self.entry_item_01 = Entry(self.fr_short_game, width=3,
+                                   justify="center")
+        self.entry_item_01.grid(row=1, column=0, padx=(15, 0), pady=(15, 15))
+
+        self.entry_item_02 = Entry(self.fr_short_game, width=3,
+                                   justify="center")
+        self.entry_item_02.grid(row=1, column=1, padx=(15, 0), pady=(15, 15))
+
+        self.entry_item_03 = Entry(self.fr_short_game, width=3,
+                                   justify="center")
+        self.entry_item_03.grid(row=1, column=2, padx=(15, 0), pady=(15, 15))
+
+        self.entry_item_04 = Entry(self.fr_short_game, width=3,
+                                   justify="center")
+        self.entry_item_04.grid(row=1, column=3, padx=(15, 0), pady=(15, 15))
+
+        self.entry_item_05 = Entry(self.fr_short_game, width=3,
+                                   justify="center")
+        self.entry_item_05.grid(row=1, column=4, padx=(15, 0), pady=(15, 15))
+
+        self.entry_item_06 = Entry(self.fr_short_game, width=3,
+                                   justify="center")
+        self.entry_item_06.grid(row=1, column=5, padx=(15, 15), pady=(15, 15))
