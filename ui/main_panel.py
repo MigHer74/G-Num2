@@ -19,7 +19,8 @@ class MainPanel(Window):
     def select_game(self):
         self.fr_select_game = Labelframe(self, text="Select Game",
                                          labelanchor="n")
-        self.fr_select_game.grid(row=0, column=0, padx=15, pady=15)
+        self.fr_select_game.grid(row=0, column=0, padx=15, pady=15,
+                                 sticky="nswe")
 
         self.radio_play = Radiobutton(self.fr_select_game, text="Play",
                                       value="play")
@@ -34,7 +35,7 @@ class MainPanel(Window):
     def select_type(self):
         self.fr_select_type = Labelframe(self, text="Select Game Type",
                                          labelanchor="n")
-        self.fr_select_type.grid(row=1, column=0, padx=15, pady=15)
+        self.fr_select_type.grid(row=1, column=0, padx=15, pady=15, sticky="n")
 
         self.radio_short = Radiobutton(self.fr_select_type, text="Short Game",
                                        value="short")
@@ -48,7 +49,7 @@ class MainPanel(Window):
 
     def panel_short_game(self):
         self.fr_short_game = Labelframe(self,
-                                        text="Last Result of the Short Game",
+                                        text="Last Result of The Short Game",
                                         labelanchor="n")
         self.fr_short_game.grid(row=0, column=1, padx=(15, 15), pady=(15, 15),
                                 sticky="n")
