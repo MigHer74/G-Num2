@@ -193,5 +193,6 @@ class MainPanel(Window):
         self.button_cancel = Button(self.fr_buttons, width=15, text="New Game")
         self.button_cancel.grid(row=2, column=0, pady=(15, 0))
 
-        self.button_close = Button(self.fr_buttons, width=15, text="Close App")
+        self.button_close = Button(self.fr_buttons, width=15, text="Close App",
+                                   command=self.destroy)
         self.button_close.grid(row=3, column=0, pady=(15, 0))
