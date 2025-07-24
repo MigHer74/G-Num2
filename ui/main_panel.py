@@ -1,5 +1,5 @@
-from ttkbootstrap import Window, Labelframe, Radiobutton, Entry, Label
-from ttkbootstrap import StringVar
+from ttkbootstrap import Window, Frame, Labelframe, Radiobutton, Entry, Label
+from ttkbootstrap import Button, StringVar
 
 
 class MainPanel(Window):
@@ -15,6 +15,8 @@ class MainPanel(Window):
         self.select_type()
         self.panel_short_game()
         self.panel_long_game()
+        self.panel_buttons()
+        self.panel_results()
 
     def select_game(self):
         self.fr_select_game = Labelframe(self, text="Select Game",
@@ -168,3 +170,27 @@ class MainPanel(Window):
         self.entry_item_36 = Entry(self.fr_long_game, width=3,
                                    justify="center")
         self.entry_item_36.grid(row=2, column=6, padx=(15, 15), pady=(15, 15))
+
+    def panel_results(self):
+        self.fr_results = Labelframe(self, width=368, height=200,
+                                     text="Game Results", labelanchor="n")
+        self.fr_results.grid(row=2, column=1, padx=(15, 15),
+                             pady=(15, 15), sticky="n")
+        self.fr_results.grid_propagate(True)
+
+    def panel_buttons(self):
+        self.fr_buttons = Frame(self)
+        self.fr_buttons.grid(row=2, column=0, padx=(15, 15), pady=(15, 15))
+
+        self.button_play = Button(self.fr_buttons, width=15, text="Play Game")
+        self.button_play.grid(row=0, column=0)
+
+        self.button_cancel = Button(self.fr_buttons, width=15,
+                                    text="Reset Game")
+        self.button_cancel.grid(row=1, column=0, pady=(15, 0))
+
+        self.button_cancel = Button(self.fr_buttons, width=15, text="New Game")
+        self.button_cancel.grid(row=2, column=0, pady=(15, 0))
+
+        self.button_close = Button(self.fr_buttons, width=15, text="Close App")
+        self.button_close.grid(row=3, column=0, pady=(15, 0))
