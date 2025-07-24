@@ -7,7 +7,8 @@ class MainPanel(Window):
         super().__init__(
             title="G-Numbers | Main Panel",
             themename="solar",
-            size=(800, 600)
+            size=(555, 580),
+            resizable=(False, False)
             )
 
         self.place_window_center()
