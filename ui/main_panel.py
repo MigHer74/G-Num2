@@ -20,7 +20,7 @@ class MainPanel(Window):
         self.panel_results()
 
     def select_game(self):
-        self.fr_select_game = Labelframe(self, text="Select Game",
+        self.fr_select_game = Labelframe(self, text=" Select Game ",
                                          labelanchor="n")
         self.fr_select_game.grid(row=0, column=0, padx=15, pady=15,
                                  sticky="nswe")
@@ -36,7 +36,7 @@ class MainPanel(Window):
                                sticky="w")
 
     def select_type(self):
-        self.fr_select_type = Labelframe(self, text="Select Game Type",
+        self.fr_select_type = Labelframe(self, text=" Select Game Type ",
                                          labelanchor="n")
         self.fr_select_type.grid(row=1, column=0, padx=15, pady=15, sticky="n")
 
@@ -52,7 +52,7 @@ class MainPanel(Window):
 
     def panel_short_game(self):
         self.fr_short_game = Labelframe(self,
-                                        text="Last Result of The Short Game",
+                                        text=" Last Result of The Short Game ",
                                         labelanchor="n")
         self.fr_short_game.grid(row=0, column=1, padx=(15, 15), pady=(15, 15),
                                 sticky="n")
@@ -86,7 +86,7 @@ class MainPanel(Window):
 
     def panel_long_game(self):
         self.fr_long_game = Labelframe(self,
-                                       text="Last Result of The Long Game",
+                                       text=" Last Result of The Long Game ",
                                        labelanchor="n")
         self.fr_long_game.grid(row=1, column=1, padx=(15, 15), pady=(15, 15),
                                sticky="n")
@@ -174,7 +174,7 @@ class MainPanel(Window):
 
     def panel_results(self):
         self.fr_results = Labelframe(self, width=368, height=200,
-                                     text="Game Results", labelanchor="n")
+                                     text=" Game Results ", labelanchor="n")
         self.fr_results.grid(row=2, column=1, padx=(15, 15),
                              pady=(15, 15), sticky="n")
         self.fr_results.grid_propagate(True)
