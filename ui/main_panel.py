@@ -226,10 +226,23 @@ class MainPanel(Window):
     def fill_entries(self, type_game):
         if type_game == "short":
             entries = self.fr_short_game.winfo_children()
+            for i, entry in enumerate(entries):
+                if isinstance(entry, Entry):
+                    entry.delete(0, 'end')
+                    entry.insert(0, self.short_data[i + 2])
         else:
+            row = 0
+            item = 0
             entries = self.fr_long_game.winfo_children()
-
-        for i, entry in enumerate(entries):
-            if isinstance(entry, Entry):
-                entry.delete(0, 'end')
-                entry.insert(0, str(i + 1))
+            for entry in entries:
+                if isinstance(entry, Entry):
+                    if item <= 5:
+                        entry.delete(0, 'end')
+                        entry.insert(0, self.long_data[row][item + 3])
+                        item += 1
+                    else:
+                        row += 1
+                        item = 0
+                        entry.delete(0, 'end')
+                        entry.insert(0, self.long_data[row][item + 3])
+                        item += 1
