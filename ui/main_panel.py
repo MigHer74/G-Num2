@@ -196,3 +196,11 @@ class MainPanel(Window):
         self.button_close = Button(self.fr_buttons, width=15, text="Close App",
                                    command=self.destroy)
         self.button_close.grid(row=3, column=0, pady=(15, 0))
+
+    def state_entries(self, enable=True):
+        for widget in self.fr_short_game.winfo_children():
+            if isinstance(widget, Entry):
+                widget.config(state='normal' if enable else 'disabled')
+        for widget in self.fr_long_game.winfo_children():
+            if isinstance(widget, Entry):
+                widget.config(state='normal' if enable else 'disabled')
