@@ -25,3 +25,17 @@ def create_table():
     dbcur.execute(sqlrow)
     dbcon.commit()
     dbcon.close()
+
+
+def get_latest_data():
+    sqlrow1 = "SELECT * FROM games WHERE game_type = 'S' AND game_week = 'W1';"
+    sqlrow2 = """SELECT * FROM games WHERE game_type = 'L' AND game_week = 'W1'
+    ORDER BY game_number;"""
+
+    dbcon = connect_db()
+    dbcur = dbcon.cursor()
+    data_short = dbcur.execute(sqlrow1).fetchone()
+    data_long = dbcur.execute(sqlrow2).fetchall()
+    dbcon.close()
+
+    return data_short, data_long
