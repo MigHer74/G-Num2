@@ -1,5 +1,6 @@
 from ttkbootstrap import Window, Frame, Labelframe, Radiobutton, Entry, Label
 from ttkbootstrap import Button, StringVar
+import src.db_tools as db
 
 
 class MainPanel(Window):
@@ -18,6 +19,7 @@ class MainPanel(Window):
         self.panel_long_game()
         self.panel_buttons()
         self.panel_results()
+        self.load_data()
         self.initial_state()
 
     def select_game(self):
@@ -197,6 +199,14 @@ class MainPanel(Window):
         self.button_close = Button(self.fr_buttons, width=15, text="Close App",
                                    command=self.destroy)
         self.button_close.grid(row=3, column=0, pady=(15, 0))
+
+    def load_data(self):
+        short_data, long_data = db.get_latest_data()
+
+        if short_data:
+            pass
+        if long_data:
+            pass
 
     def state_entries(self, enable=True):
         for widget in self.fr_short_game.winfo_children():
