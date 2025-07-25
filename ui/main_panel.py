@@ -203,10 +203,15 @@ class MainPanel(Window):
     def load_data(self):
         self.short_data, self.long_data = db.get_latest_data()
 
+        self.state_entries(True)
+
         if self.short_data:
             self.fill_entries("short")
         if self.long_data:
             self.fill_entries("long")
+
+        self.state_entries(False)
+        self.initial_state()
 
     def state_entries(self, enable=True):
         for widget in self.fr_short_game.winfo_children():
