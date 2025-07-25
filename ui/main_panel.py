@@ -18,6 +18,7 @@ class MainPanel(Window):
         self.panel_long_game()
         self.panel_buttons()
         self.panel_results()
+        self.initial_state()
 
     def select_game(self):
         self.fr_select_game = Labelframe(self, text=" Select Game ",
@@ -190,8 +191,8 @@ class MainPanel(Window):
                                     text="Reset Game")
         self.button_cancel.grid(row=1, column=0, pady=(15, 0))
 
-        self.button_cancel = Button(self.fr_buttons, width=15, text="New Game")
-        self.button_cancel.grid(row=2, column=0, pady=(15, 0))
+        self.button_new = Button(self.fr_buttons, width=15, text="New Game")
+        self.button_new.grid(row=2, column=0, pady=(15, 0))
 
         self.button_close = Button(self.fr_buttons, width=15, text="Close App",
                                    command=self.destroy)
@@ -204,3 +205,10 @@ class MainPanel(Window):
         for widget in self.fr_long_game.winfo_children():
             if isinstance(widget, Entry):
                 widget.config(state='normal' if enable else 'disabled')
+
+    def initial_state(self):
+        self.radio_short.config(state="disabled")
+        self.radio_long.config(state="disabled")
+        self.button_play.config(state="disabled")
+        self.button_cancel.config(state="disabled")
+        self.button_new.config(state="disabled")
