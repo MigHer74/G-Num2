@@ -201,12 +201,12 @@ class MainPanel(Window):
         self.button_close.grid(row=3, column=0, pady=(15, 0))
 
     def load_data(self):
-        short_data, long_data = db.get_latest_data()
+        self.short_data, self.long_data = db.get_latest_data()
 
-        if short_data:
-            pass
-        if long_data:
-            pass
+        if self.short_data:
+            self.fill_entries("short")
+        if self.long_data:
+            self.fill_entries("long")
 
     def state_entries(self, enable=True):
         for widget in self.fr_short_game.winfo_children():
@@ -222,3 +222,14 @@ class MainPanel(Window):
         self.button_play.config(state="disabled")
         self.button_cancel.config(state="disabled")
         self.button_new.config(state="disabled")
+
+    def fill_entries(self, type_game):
+        if type_game == "short":
+            entries = self.fr_short_game.winfo_children()
+        else:
+            entries = self.fr_long_game.winfo_children()
+
+        for i, entry in enumerate(entries):
+            if isinstance(entry, Entry):
+                entry.delete(0, 'end')
+                entry.insert(0, str(i + 1))
