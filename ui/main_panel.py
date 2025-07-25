@@ -29,7 +29,7 @@ class MainPanel(Window):
                                  sticky="nswe")
 
         self.radio_play = Radiobutton(self.fr_select_game, text="Play",
-                                      value="play")
+                                      value="play", command=self.press_play)
         self.radio_play.grid(row=0, column=0, padx=(20, 20), pady=(15, 0),
                              sticky="w")
 
@@ -251,3 +251,10 @@ class MainPanel(Window):
                         entry.delete(0, 'end')
                         entry.insert(0, self.long_data[row][item + 3])
                         item += 1
+
+    def press_play(self):
+        self.radio_play.config(state="disabled")
+        self.radio_replay.config(state="disabled")
+        self.radio_short.config(state="normal")
+        self.radio_long.config(state="normal")
+        self.button_cancel.config(state="normal")
