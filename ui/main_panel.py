@@ -214,11 +214,11 @@ class MainPanel(Window):
         self.initial_state()
 
     def state_entries(self, enable=True, section="both"):
-        if section == "short" and section == "both":
+        if section == "short" or section == "both":
             for widget in self.fr_short_game.winfo_children():
                 if isinstance(widget, Entry):
                     widget.config(state='normal' if enable else 'disabled')
-        if section == "long" and section == "both":
+        if section == "long" or section == "both":
             for widget in self.fr_long_game.winfo_children():
                 if isinstance(widget, Entry):
                     widget.config(state='normal' if enable else 'disabled')
@@ -262,7 +262,7 @@ class MainPanel(Window):
         self.button_cancel.config(state="normal")
 
     def press_short(self):
-        self.state_entries(True)
+        self.state_entries(True, "short")
         self.radio_short.config(state="disabled")
         self.radio_long.config(state="disabled")
         self.button_play.config(state="normal")
