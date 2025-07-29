@@ -53,7 +53,8 @@ class MainPanel(Window):
                               sticky="w")
 
         self.radio_long = Radiobutton(self.fr_select_type, text="Long Game",
-                                      value="long", variable=self.option)
+                                      value="long", variable=self.option,
+                                      command=self.press_long)
         self.radio_long.grid(row=1, column=0, padx=(20, 20), pady=(15, 15),
                              sticky="w")
 
@@ -281,6 +282,13 @@ class MainPanel(Window):
 
     def press_short(self):
         self.state_entries(True, "short")
+        self.radio_short.config(state="disabled")
+        self.radio_long.config(state="disabled")
+        self.button_play.config(state="normal")
+        self.button_cancel.config(state="normal")
+
+    def press_long(self):
+        self.state_entries(True, "long")
         self.radio_short.config(state="disabled")
         self.radio_long.config(state="disabled")
         self.button_play.config(state="normal")
