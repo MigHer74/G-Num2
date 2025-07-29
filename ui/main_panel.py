@@ -12,6 +12,8 @@ class MainPanel(Window):
             resizable=(False, False)
             )
 
+        self.option = StringVar(value=None)
+
         self.place_window_center()
         self.select_game()
         self.select_type()
@@ -29,12 +31,13 @@ class MainPanel(Window):
                                  sticky="nswe")
 
         self.radio_play = Radiobutton(self.fr_select_game, text="Play",
-                                      value="play", command=self.press_play)
+                                      value="play", variable=self.option,
+                                      command=self.press_play)
         self.radio_play.grid(row=0, column=0, padx=(20, 20), pady=(15, 0),
                              sticky="w")
 
         self.radio_replay = Radiobutton(self.fr_select_game, text="RePlay",
-                                        value="replay")
+                                        value="replay", variable=self.option)
         self.radio_replay.grid(row=1, column=0, padx=(20, 20), pady=(15, 15),
                                sticky="w")
 
@@ -44,12 +47,13 @@ class MainPanel(Window):
         self.fr_select_type.grid(row=1, column=0, padx=15, pady=15, sticky="n")
 
         self.radio_short = Radiobutton(self.fr_select_type, text="Short Game",
-                                       value="short", command=self.press_short)
+                                       value="short", variable=self.option,
+                                       command=self.press_short)
         self.radio_short.grid(row=0, column=0, padx=(20, 20), pady=(15, 0),
                               sticky="w")
 
         self.radio_long = Radiobutton(self.fr_select_type, text="Long Game",
-                                      value="long")
+                                      value="long", variable=self.option)
         self.radio_long.grid(row=1, column=0, padx=(20, 20), pady=(15, 15),
                              sticky="w")
 
@@ -190,7 +194,7 @@ class MainPanel(Window):
         self.button_play.grid(row=0, column=0)
 
         self.button_cancel = Button(self.fr_buttons, width=15,
-                                    text="Reset Game")
+                                    text="Reset Game", command=self.load_data)
         self.button_cancel.grid(row=1, column=0, pady=(15, 0))
 
         self.button_new = Button(self.fr_buttons, width=15, text="New Game")
@@ -235,6 +239,9 @@ class MainPanel(Window):
                     entry.delete(0, 'end')
 
     def initial_state(self):
+        self.option.set(None)
+        self.radio_play.config(state="normal")
+        self.radio_replay.config(state="normal")
         self.radio_short.config(state="disabled")
         self.radio_long.config(state="disabled")
         self.button_play.config(state="disabled")
