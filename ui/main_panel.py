@@ -213,13 +213,15 @@ class MainPanel(Window):
         self.state_entries(False)
         self.initial_state()
 
-    def state_entries(self, enable=True):
-        for widget in self.fr_short_game.winfo_children():
-            if isinstance(widget, Entry):
-                widget.config(state='normal' if enable else 'disabled')
-        for widget in self.fr_long_game.winfo_children():
-            if isinstance(widget, Entry):
-                widget.config(state='normal' if enable else 'disabled')
+    def state_entries(self, enable=True, section="both"):
+        if section == "short" and section == "both":
+            for widget in self.fr_short_game.winfo_children():
+                if isinstance(widget, Entry):
+                    widget.config(state='normal' if enable else 'disabled')
+        if section == "long" and section == "both":
+            for widget in self.fr_long_game.winfo_children():
+                if isinstance(widget, Entry):
+                    widget.config(state='normal' if enable else 'disabled')
 
     def initial_state(self):
         self.radio_short.config(state="disabled")
