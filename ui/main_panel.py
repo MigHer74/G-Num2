@@ -44,7 +44,7 @@ class MainPanel(Window):
         self.fr_select_type.grid(row=1, column=0, padx=15, pady=15, sticky="n")
 
         self.radio_short = Radiobutton(self.fr_select_type, text="Short Game",
-                                       value="short")
+                                       value="short", command=self.press_short)
         self.radio_short.grid(row=0, column=0, padx=(20, 20), pady=(15, 0),
                               sticky="w")
 
@@ -257,4 +257,11 @@ class MainPanel(Window):
         self.radio_replay.config(state="disabled")
         self.radio_short.config(state="normal")
         self.radio_long.config(state="normal")
+        self.button_cancel.config(state="normal")
+
+    def press_short(self):
+        self.state_entries(True)
+        self.radio_short.config(state="disabled")
+        self.radio_long.config(state="disabled")
+        self.button_play.config(state="normal")
         self.button_cancel.config(state="normal")
