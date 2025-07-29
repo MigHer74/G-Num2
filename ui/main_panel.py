@@ -32,7 +32,7 @@ class MainPanel(Window):
 
         self.radio_play = Radiobutton(self.fr_select_game, text="Play",
                                       value="play", variable=self.option,
-                                      command=self.press_play)
+                                      command=self.select_play)
         self.radio_play.grid(row=0, column=0, padx=(20, 20), pady=(15, 0),
                              sticky="w")
 
@@ -48,13 +48,13 @@ class MainPanel(Window):
 
         self.radio_short = Radiobutton(self.fr_select_type, text="Short Game",
                                        value="short", variable=self.option,
-                                       command=self.press_short)
+                                       command=self.select_short)
         self.radio_short.grid(row=0, column=0, padx=(20, 20), pady=(15, 0),
                               sticky="w")
 
         self.radio_long = Radiobutton(self.fr_select_type, text="Long Game",
                                       value="long", variable=self.option,
-                                      command=self.press_long)
+                                      command=self.select_long)
         self.radio_long.grid(row=1, column=0, padx=(20, 20), pady=(15, 15),
                              sticky="w")
 
@@ -273,14 +273,14 @@ class MainPanel(Window):
                         entry.insert(0, self.long_data[row][item + 3])
                         item += 1
 
-    def press_play(self):
+    def select_play(self):
         self.radio_play.config(state="disabled")
         self.radio_replay.config(state="disabled")
         self.radio_short.config(state="normal")
         self.radio_long.config(state="normal")
         self.button_cancel.config(state="normal")
 
-    def press_short(self):
+    def select_short(self):
         self.state_entries(True, "short")
         self.radio_short.config(state="disabled")
         self.radio_long.config(state="disabled")
@@ -288,7 +288,7 @@ class MainPanel(Window):
         self.button_cancel.config(state="normal")
         self.entry_item_01.focus()
 
-    def press_long(self):
+    def select_long(self):
         self.state_entries(True, "long")
         self.radio_short.config(state="disabled")
         self.radio_long.config(state="disabled")
