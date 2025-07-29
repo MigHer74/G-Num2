@@ -286,6 +286,7 @@ class MainPanel(Window):
         self.radio_long.config(state="disabled")
         self.button_play.config(state="normal")
         self.button_cancel.config(state="normal")
+        self.entry_item_01.focus()
 
     def press_long(self):
         self.state_entries(True, "long")
@@ -293,3 +294,4 @@ class MainPanel(Window):
         self.radio_long.config(state="disabled")
         self.button_play.config(state="normal")
         self.button_cancel.config(state="normal")
+        self.entry_item_11.focus()
