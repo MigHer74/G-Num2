@@ -204,6 +204,7 @@ class MainPanel(Window):
         self.short_data, self.long_data = db.get_latest_data()
 
         self.state_entries(True)
+        self.clear_entries("both")
 
         if self.short_data:
             self.fill_entries("short")
