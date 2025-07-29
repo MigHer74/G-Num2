@@ -223,6 +223,16 @@ class MainPanel(Window):
                 if isinstance(widget, Entry):
                     widget.config(state='normal' if enable else 'disabled')
 
+    def clear_entries(self, section="both"):
+        if section == "short" or section == "both":
+            for entry in self.fr_short_game.winfo_children():
+                if isinstance(entry, Entry):
+                    entry.delete(0, 'end')
+        if section == "long" or section == "both":
+            for entry in self.fr_long_game.winfo_children():
+                if isinstance(entry, Entry):
+                    entry.delete(0, 'end')
+
     def initial_state(self):
         self.radio_short.config(state="disabled")
         self.radio_long.config(state="disabled")
