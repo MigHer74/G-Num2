@@ -339,5 +339,4 @@ class MainPanel(Window):
                 numbers_final = []
                 number += 6
 
-        # self.load_data()
-        # self.initial_state()
+        self.load_data()
