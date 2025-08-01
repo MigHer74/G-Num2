@@ -191,7 +191,8 @@ class MainPanel(Window):
         self.fr_buttons = Frame(self)
         self.fr_buttons.grid(row=2, column=0, padx=(15, 15), pady=(15, 15))
 
-        self.button_play = Button(self.fr_buttons, width=15, text="Play Game")
+        self.button_play = Button(self.fr_buttons, width=15, text="Play Game",
+                                  command=self.press_play)
         self.button_play.grid(row=0, column=0)
 
         self.button_cancel = Button(self.fr_buttons, width=15,
@@ -281,6 +282,7 @@ class MainPanel(Window):
         self.button_cancel.config(state="normal")
 
     def select_short(self):
+        self.game_selected = "short"
         self.state_entries(True, "short")
         self.radio_short.config(state="disabled")
         self.radio_long.config(state="disabled")
@@ -289,9 +291,49 @@ class MainPanel(Window):
         self.entry_item_01.focus()
 
     def select_long(self):
+        self.game_selected = "long"
         self.state_entries(True, "long")
         self.radio_short.config(state="disabled")
         self.radio_long.config(state="disabled")
         self.button_play.config(state="normal")
         self.button_cancel.config(state="normal")
         self.entry_item_11.focus()
+
+    def press_play(self):
+        if self.game_selected == "short":
+            entries = self.fr_short_game.winfo_children()
+            numbers = [int(entry.get()) for entry in entries
+                       if isinstance(entry, Entry)]
+
+            numbers.insert(0, "S")
+            numbers.insert(1, "W1")
+            numbers.insert(2, 1)
+
+            numbers = tuple(numbers)
+        else:
+            entries = self.fr_long_game.winfo_children()
+            numbers = [int(entry.get()) for entry in entries
+                       if isinstance(entry, Entry)]
+
+            print(numbers)
+
+            numbers_final = []
+            number = 0
+
+            for i in range(3):
+                numbers_final.insert(0, "L")
+                numbers_final.insert(1, f"W{i + 1}")
+                numbers_final.insert(2, i + 1)
+
+                for item in range(number, len(numbers)):
+                    if item > number + 5:
+                        break
+                    else:
+                        numbers_final.append(numbers[item])
+
+                print(numbers_final)
+                numbers_final = []
+                number += 6
+
+        # self.load_data()
+        # self.initial_state()
