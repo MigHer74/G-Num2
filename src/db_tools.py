@@ -33,7 +33,7 @@ def load_initial_values():
 
     for game in range(1, 7):
         sqlrow = f"INSERT INTO games\
-            VALUES('S', 'W{game}', {game}, 0, 0, 0, 0, 0, 0);"
+            VALUES('S', 'W{game}', 1, 0, 0, 0, 0, 0, 0);"
         dbcur.execute(sqlrow)
 
     for week in range(1, 7):
@@ -82,5 +82,13 @@ def update_games(game_type):
             AND game_type = '{game_type}';"
         dbcur.execute(sqlrow)
 
+    dbcon.commit()
+    dbcon.close()
+
+
+def insert_values(data):
+    dbcon = connect_db()
+    dbcur = dbcon.cursor()
+    dbcur.execute("INSERT INTO games VALUES(?,?,?,?,?,?,?,?,?)", (data))
     dbcon.commit()
     dbcon.close()
