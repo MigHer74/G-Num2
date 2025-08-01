@@ -9,6 +9,6 @@ def verify_database():
     if not Path(dbFolder).is_dir():
         Path.mkdir("db")
 
-    if not Path(dbFile).is_file():
+    if not Path("./" + dbFolder + "/" + dbFile).is_file():
         db.create_table()
         db.load_initial_values()
