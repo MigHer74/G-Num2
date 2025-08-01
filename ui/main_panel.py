@@ -301,6 +301,8 @@ class MainPanel(Window):
 
     def press_play(self):
         if self.game_selected == "short":
+            db.update_games("short")
+
             entries = self.fr_short_game.winfo_children()
             numbers = [int(entry.get()) for entry in entries
                        if isinstance(entry, Entry)]
@@ -310,19 +312,21 @@ class MainPanel(Window):
             numbers.insert(2, 1)
 
             numbers = tuple(numbers)
+
+            db.insert_values(numbers)
         else:
+            db.update_games("long")
+
             entries = self.fr_long_game.winfo_children()
             numbers = [int(entry.get()) for entry in entries
                        if isinstance(entry, Entry)]
-
-            print(numbers)
 
             numbers_final = []
             number = 0
 
             for i in range(3):
                 numbers_final.insert(0, "L")
-                numbers_final.insert(1, f"W{i + 1}")
+                numbers_final.insert(1, "W1")
                 numbers_final.insert(2, i + 1)
 
                 for item in range(number, len(numbers)):
@@ -331,7 +335,7 @@ class MainPanel(Window):
                     else:
                         numbers_final.append(numbers[item])
 
-                print(numbers_final)
+                db.insert_values(tuple(numbers_final))
                 numbers_final = []
                 number += 6
 
