@@ -92,3 +92,19 @@ def insert_values(data):
     dbcur.execute("INSERT INTO games VALUES(?,?,?,?,?,?,?,?,?)", (data))
     dbcon.commit()
     dbcon.close()
+
+
+def get_stored_values(game_type):
+    if game_type == "short":
+        game_type = "S"
+    else:
+        game_type = "L"
+
+    sqlrow = f"SELECT * FROM games WHERE gane_type = '{game_type}';"
+
+    dbcon = connect_db()
+    dbcur = dbcon.cursor()
+    dbdata = dbcur.execute(sqlrow).fetchall()
+    dbcon.close()
+
+    return dbdata
