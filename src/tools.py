@@ -11,3 +11,4 @@ def verify_database():
 
     if not Path(dbFile).is_file():
         db.create_table()
+        db.load_initial_values()
