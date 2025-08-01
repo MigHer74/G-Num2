@@ -61,26 +61,26 @@ def get_latest_data():
 
 
 def update_games(game_type):
-    dblist = ["W6", "W5", "W4", "W3", "W2", "W1"]
+    week_list = ["W6", "W5", "W4", "W3", "W2", "W1"]
 
     if game_type == "short":
-        dbtype = "S"
+        game_type = "S"
     else:
-        dbtype = "L"
+        game_type = "L"
 
     dbcon = connect_db()
     dbcur = dbcon.cursor()
 
-    row1 = "DELETE FROM games WHERE gWeek ='W6'AND gType = '{dbtype}';"
-    row2 = f"AND gType = '{dbtype}';"
-    command = row1 + row2
-    dbcur.execute(command)
+    sqlrow = f"DELETE FROM games WHERE game_week ='W6'AND \
+        game_type = '{game_type}';"
+
+    dbcur.execute(sqlrow)
 
     for dbindex in range(1, 6):
-        row1 = f"UPDATE games SET gWeek = '{dblist[dbindex-1]}'"
-        row2 = f"WHERE gWeek = '{dblist[dbindex]}' AND gType = '{dbtype}';"
-        command = row1 + row2
-        dbcur.execute(command)
+        sqlrow = f"UPDATE games SET game_week = '{week_list[dbindex-1]}' \
+            WHERE game_week = '{week_list[dbindex]}' \
+            AND game_type = '{game_type}';"
+        dbcur.execute(sqlrow)
 
     dbcon.commit()
     dbcon.close()
