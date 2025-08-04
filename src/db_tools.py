@@ -100,7 +100,7 @@ def get_stored_values(game_type):
     else:
         game_type = "L"
 
-    sqlrow = f"SELECT * FROM games WHERE gane_type = '{game_type}';"
+    sqlrow = f"SELECT * FROM games WHERE game_type = '{game_type}';"
 
     dbcon = connect_db()
     dbcur = dbcon.cursor()
