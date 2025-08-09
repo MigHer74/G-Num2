@@ -1,5 +1,6 @@
 from ttkbootstrap import Window, Frame, Labelframe, Radiobutton, Entry, Label
 from ttkbootstrap import Button, StringVar
+from src.engine import game_engine
 import src.db_tools as db
 
 
@@ -206,6 +207,44 @@ class MainPanel(Window):
                                    command=self.destroy)
         self.button_close.grid(row=3, column=0, pady=(15, 0))
 
+    def build_results(self, game_type: str) -> list:
+        (label_results_01, label_results_02, label_results_03,
+         label_results_04, label_results_f) = game_engine(game_type)
+
+        if game_type == "short":
+            row_result_1 = f"5+ --> {", ".join(label_results_01)}"
+            row_result_2 = f"4 ---> {", ".join(label_results_02)}"
+            row_result_3 = f"3 ---> {", ".join(label_results_03)}"
+            row_result_4 = f"2 ---> {", ".join(label_results_04)}"
+            row_result_f = f"Final: {", ".join(label_results_f)}"
+        else:
+            row_result_1 = f"6+ --> {", ".join(label_results_01)}"
+            row_result_2 = f"5 ---> {", ".join(label_results_02)}"
+            row_result_3 = f"4 ---> {", ".join(label_results_03)}"
+            row_result_4 = f"3 ---> {", ".join(label_results_04)}"
+            row_result_f = f"Final: {", ".join(label_results_f)}"
+
+        Label(self.fr_results, text=row_result_1).grid(row=0, column=0,
+                                                       padx=(15, 15),
+                                                       pady=(10, 0),
+                                                       sticky="w")
+        Label(self.fr_results, text=row_result_2).grid(row=1, column=0,
+                                                       padx=(15, 15),
+                                                       pady=(10, 0),
+                                                       sticky="w")
+        Label(self.fr_results, text=row_result_3).grid(row=2, column=0,
+                                                       padx=(15, 15),
+                                                       pady=(10, 0),
+                                                       sticky="w")
+        Label(self.fr_results, text=row_result_4).grid(row=3, column=0,
+                                                       padx=(15, 15),
+                                                       pady=(10, 0),
+                                                       sticky="w")
+        Label(self.fr_results, text=row_result_f).grid(row=4, column=0,
+                                                       padx=(15, 15),
+                                                       pady=(10, 10),
+                                                       sticky="w")
+
     def load_data(self):
         self.short_data, self.long_data = db.get_latest_data()
 
@@ -314,6 +353,8 @@ class MainPanel(Window):
             numbers = tuple(numbers)
 
             db.insert_values(numbers)
+
+            self.build_results("short")
         else:
             db.update_games("long")
 
@@ -338,5 +379,7 @@ class MainPanel(Window):
                 db.insert_values(tuple(numbers_final))
                 numbers_final = []
                 number += 6
+
+            self.build_results("long")
 
         self.load_data()
