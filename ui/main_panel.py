@@ -9,7 +9,7 @@ class MainPanel(Window):
         super().__init__(
             title="G-Numbers | Main Panel",
             themename="solar",
-            size=(555, 580),
+            size=(555, 560),
             resizable=(False, False)
             )
 
@@ -182,7 +182,7 @@ class MainPanel(Window):
         self.entry_item_36.grid(row=2, column=6, padx=(15, 15), pady=(15, 15))
 
     def panel_results(self):
-        self.fr_results = Labelframe(self, width=368, height=200,
+        self.fr_results = Labelframe(self, width=368, height=180,
                                      text=" Game Results ", labelanchor="n")
         self.fr_results.grid(row=2, column=1, padx=(15, 15),
                              pady=(15, 15), sticky="n")
