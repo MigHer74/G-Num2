@@ -279,6 +279,11 @@ class MainPanel(Window):
                 if isinstance(entry, Entry):
                     entry.delete(0, 'end')
 
+    def clear_results(self):
+        for widget in self.fr_results.winfo_children():
+            if isinstance(widget, Label):
+                widget.destroy()
+
     def initial_state(self):
         self.option.set(None)
         self.radio_play.config(state="normal")
@@ -319,6 +324,7 @@ class MainPanel(Window):
         self.radio_short.config(state="normal")
         self.radio_long.config(state="normal")
         self.button_cancel.config(state="normal")
+        self.clear_results()
 
     def select_short(self):
         self.game_selected = "short"
