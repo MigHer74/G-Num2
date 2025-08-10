@@ -14,6 +14,7 @@ class MainPanel(Window):
             )
 
         self.option = StringVar(value=None)
+        self.game = StringVar(value=None)
 
         self.place_window_center()
         self.select_game()
@@ -38,7 +39,8 @@ class MainPanel(Window):
                              sticky="w")
 
         self.radio_replay = Radiobutton(self.fr_select_game, text="RePlay",
-                                        value="replay", variable=self.option)
+                                        value="replay", variable=self.option,
+                                        command=self.select_replay)
         self.radio_replay.grid(row=1, column=0, padx=(20, 20), pady=(15, 15),
                                sticky="w")
 
@@ -48,13 +50,13 @@ class MainPanel(Window):
         self.fr_select_type.grid(row=1, column=0, padx=15, pady=15, sticky="n")
 
         self.radio_short = Radiobutton(self.fr_select_type, text="Short Game",
-                                       value="short", variable=self.option,
+                                       value="short", variable=self.game,
                                        command=self.select_short)
         self.radio_short.grid(row=0, column=0, padx=(20, 20), pady=(15, 0),
                               sticky="w")
 
         self.radio_long = Radiobutton(self.fr_select_type, text="Long Game",
-                                      value="long", variable=self.option,
+                                      value="long", variable=self.game,
                                       command=self.select_long)
         self.radio_long.grid(row=1, column=0, padx=(20, 20), pady=(15, 15),
                              sticky="w")
@@ -286,6 +288,7 @@ class MainPanel(Window):
 
     def initial_state(self):
         self.option.set(None)
+        self.game.set(None)
         self.radio_play.config(state="normal")
         self.radio_replay.config(state="normal")
         self.radio_short.config(state="disabled")
@@ -326,23 +329,37 @@ class MainPanel(Window):
         self.button_cancel.config(state="normal")
         self.clear_results()
 
-    def select_short(self):
-        self.game_selected = "short"
-        self.state_entries(True, "short")
-        self.radio_short.config(state="disabled")
-        self.radio_long.config(state="disabled")
-        self.button_play.config(state="normal")
+    def select_replay(self):
+        self.radio_play.config(state="disabled")
+        self.radio_replay.config(state="disabled")
+        self.radio_short.config(state="normal")
+        self.radio_long.config(state="normal")
         self.button_cancel.config(state="normal")
-        self.entry_item_01.focus()
+        self.clear_results()
+
+    def select_short(self):
+        if self.option.get() == "play":
+            self.game_selected = "short"
+            self.state_entries(True, "short")
+            self.radio_short.config(state="disabled")
+            self.radio_long.config(state="disabled")
+            self.button_play.config(state="normal")
+            self.button_cancel.config(state="normal")
+            self.entry_item_01.focus()
+        else:
+            self.build_results("short")
 
     def select_long(self):
-        self.game_selected = "long"
-        self.state_entries(True, "long")
-        self.radio_short.config(state="disabled")
-        self.radio_long.config(state="disabled")
-        self.button_play.config(state="normal")
-        self.button_cancel.config(state="normal")
-        self.entry_item_11.focus()
+        if self.option.get() == "play":
+            self.game_selected = "long"
+            self.state_entries(True, "long")
+            self.radio_short.config(state="disabled")
+            self.radio_long.config(state="disabled")
+            self.button_play.config(state="normal")
+            self.button_cancel.config(state="normal")
+            self.entry_item_11.focus()
+        else:
+            self.build_results("long")
 
     def press_play(self):
         if self.game_selected == "short":
