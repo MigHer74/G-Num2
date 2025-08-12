@@ -202,8 +202,9 @@ class MainPanel(Window):
                                     text="Reset Game", command=self.load_data)
         self.button_cancel.grid(row=1, column=0, pady=(15, 0))
 
-        self.button_new = Button(self.fr_buttons, width=15, text="New Game")
-        self.button_new.grid(row=2, column=0, pady=(15, 0))
+        self.button_previous = Button(self.fr_buttons, width=15,
+                                      text="Previous Results")
+        self.button_previous.grid(row=2, column=0, pady=(15, 0))
 
         self.button_close = Button(self.fr_buttons, width=15, text="Close App",
                                    command=self.destroy)
@@ -295,7 +296,7 @@ class MainPanel(Window):
         self.radio_long.config(state="disabled")
         self.button_play.config(state="disabled")
         self.button_cancel.config(state="disabled")
-        self.button_new.config(state="disabled")
+        self.button_previous.config(state="normal")
 
     def fill_entries(self, type_game):
         if type_game == "short":
@@ -326,6 +327,7 @@ class MainPanel(Window):
         self.radio_replay.config(state="disabled")
         self.radio_short.config(state="normal")
         self.radio_long.config(state="normal")
+        self.button_previous.config(state="disabled")
         self.button_cancel.config(state="normal")
         self.clear_results()
 
@@ -334,6 +336,7 @@ class MainPanel(Window):
         self.radio_replay.config(state="disabled")
         self.radio_short.config(state="normal")
         self.radio_long.config(state="normal")
+        self.button_previous.config(state="disabled")
         self.button_cancel.config(state="normal")
         self.clear_results()
 
