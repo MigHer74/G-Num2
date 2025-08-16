@@ -188,7 +188,7 @@ class MainPanel(Window):
                                      text=" Game Results ", labelanchor="n")
         self.fr_results.grid(row=2, column=1, padx=(15, 15),
                              pady=(15, 15), sticky="n")
-        self.fr_results.grid_propagate(True)
+        self.fr_results.grid_propagate(False)
 
     def panel_buttons(self):
         self.fr_buttons = Frame(self)
